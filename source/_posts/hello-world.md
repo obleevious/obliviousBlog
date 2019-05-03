@@ -35,4 +35,6 @@ More info: [Generating](https://hexo.io/docs/generating.html)
 $ hexo deploy
 ```
 
+do sth and modify
+
 More info: [Deployment](https://hexo.io/docs/deployment.html)

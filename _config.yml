@@ -13,8 +13,8 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://obleevious.github.io/blog
-root: /blog/
+url: https://obleevious.github.io
+root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
@@ -80,8 +80,8 @@ theme: diaspora
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  # repo: git@github.com:obleevious/obleevious.github.io.git
-  repo: git@github.com:obleevious/obliviousBlogStatic.git
+  repo: git@github.com:obleevious/obleevious.github.io.git
+  # repo: git@github.com:obleevious/obliviousBlogStatic.git
 
 
 theme_config:
