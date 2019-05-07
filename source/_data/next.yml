@@ -604,8 +604,8 @@ calendar:
 
 # Disqus
 disqus:
-  enable: false
-  shortname:
+  enable: true
+  shortname: obleevious
   count: true
   lazyload: false
 
