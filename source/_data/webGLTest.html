@@ -1,0 +1,89 @@
+<style>
+    /* body {margin: 0} */
+    #myWebGLDiv {
+        margin: 0; 
+        width: 100%;
+        /* height: 0; */
+        /* padding-top: 56.25%; */
+     /* aspect ratio  | padding-bottom value
+        --------------|----------------------
+            16:9      |       56.25%
+            4:3       |       75%
+            3:2       |       66.66%
+            8:5       |       62.5% */
+        position: relative;
+    }
+</style>
+
+<div id="myWebGLDiv" onmousemove="myMouseMove(event)">
+    <script src="https://threejs.org/build/three.min.js"></script>
+    <!-- <script src="/scripts/three.min.js"></script> -->
+    <script>
+        // var ht = document.getElementById("myWebGLDiv").clientHeight;
+        var ht = document.getElementById("myWebGLDiv").clientWidth * 0.5625;
+        var wt = document.getElementById("myWebGLDiv").clientWidth;
+
+        var scene = new THREE.Scene();
+        // var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 500);
+        var camera = new THREE.PerspectiveCamera(75, wt / ht, 0.1, 500);
+
+        var renderer = new THREE.WebGLRenderer();
+        // renderer.setSize(window.innerWidth, window.innerHeight);
+
+        renderer.setSize(wt, ht);
+
+        // document.body.appendChild(renderer.domElement);
+        document.getElementById("myWebGLDiv").appendChild(renderer.domElement);
+
+        var geometry = new THREE.BoxGeometry(3, 3, 3);
+        var material = new THREE.MeshBasicMaterial({
+            color: "#595959",
+            wireframe: true
+        });
+        var cube = new THREE.Mesh(geometry, material);
+
+        // camera.position.z = 5;
+        camera.position.set(0, 0, 10);
+        camera.lookAt(0, 0, 0);
+
+        var lineMaterial = new THREE.LineBasicMaterial({color: "#2b2b2b"});
+        var lineGeometry = new THREE.Geometry();
+        lineGeometry.vertices.push(new THREE.Vector3(-5, 0, 0));
+        lineGeometry.vertices.push(new THREE.Vector3(0, 5, 0));
+        lineGeometry.vertices.push(new THREE.Vector3(5, 0, 0));
+        lineGeometry.vertices.push(new THREE.Vector3(0, -5, 0));
+        lineGeometry.vertices.push(new THREE.Vector3(-5, 0, 0));
+
+        var line = new THREE.Line(lineGeometry, lineMaterial);
+
+        var boxFrame = new THREE.BoxGeometry(1, 1, 1);
+        var geo = new THREE.EdgesGeometry( boxFrame ); 
+        var mat = new THREE.LineBasicMaterial( { color: 0xffffff, linewidth: 1 } );
+        var wfra = new THREE.LineSegments( geo, mat );
+
+        scene.add(cube);
+        scene.add(line);
+        scene.add(wfra);
+
+        function myMouseMove(event) {
+            cube.rotation.x = event.clientY / window.innerHeight * 3.14;
+            cube.rotation.z = - event.clientX / window.innerWidth * 3.14;
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            cube.rotation.z += 0.01;
+            cube.rotation.y += 0.01;
+
+            line.rotation.x += 0.01;
+            line.rotation.y += 0.01;
+
+            wfra.rotation.z -= 0.01;
+            wfra.rotation.x -= 0.01;
+
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+</div>
