@@ -15,13 +15,15 @@
     }
 </style>
 
-<div id="myWebGLDiv" onmousemove="myMouseMove(event)">
+<div id="myWebGLDiv" onmousemove="myMouseMove(event)" onmouseenter="myMouseEnter()" onmouseleave="myMouseLeave(event)">
     <script src="https://threejs.org/build/three.min.js"></script>
     <!-- <script src="/scripts/three.min.js"></script> -->
     <script>
         // var ht = document.getElementById("myWebGLDiv").clientHeight;
         var ht = document.getElementById("myWebGLDiv").clientWidth * 0.5625;
         var wt = document.getElementById("myWebGLDiv").clientWidth;
+
+        var mouseIn = false;
 
         var scene = new THREE.Scene();
         // var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 500);
@@ -66,15 +68,26 @@
         scene.add(wfra);
 
         function myMouseMove(event) {
-            cube.rotation.x = event.clientY / window.innerHeight * 3.14;
-            cube.rotation.z = - event.clientX / window.innerWidth * 3.14;
+            cube.rotation.x = - event.clientY / ht * 3.14;
+            cube.rotation.z = - event.clientX / wt * 3.14;
+        }
+
+        function myMouseEnter() {
+            mouseIn = true;
+            cube.rotation.y = 0;
+        }
+
+        function myMouseLeave() {
+            mouseIn = false;
         }
 
         function animate() {
             requestAnimationFrame(animate);
 
-            cube.rotation.z += 0.01;
-            cube.rotation.y += 0.01;
+            if (!mouseIn) {
+                cube.rotation.z += 0.01;
+                cube.rotation.y += 0.01;
+            }
 
             line.rotation.x += 0.01;
             line.rotation.y += 0.01;
