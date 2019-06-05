@@ -3,7 +3,7 @@ title: Unix Linux Windows MacOS TL;DR
 date: 2019-05-09 11:57:03
 tags: 
     - OS
-    - basic knowledge
+    - basic
 ---
 
 IBM created => PC
