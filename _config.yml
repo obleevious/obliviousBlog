@@ -93,12 +93,12 @@ live2d:
   tagMode: false
   log: false
   model:
-    # use: live2d-widget-model-hijiki
-    use: aiya
+    use: live2d-widget-model-hijiki
+    # use: aiya
   display:
     position: left
-    width: 100
-    height: 200
+    width: 150
+    height: 300
   mobile:
     show: false
   react:
