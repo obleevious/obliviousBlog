@@ -10,3 +10,5 @@ tags:
 Food lover
 
 {% fi /images/stake.JPG,,, 300px %}
+
+午休真的好爽，只要20十分钟。效果拔群
